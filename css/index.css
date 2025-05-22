@@ -626,7 +626,94 @@ body {
     transition: all 0.3s ease;
 }
 
+/* ===== MOBILE & TOUCH OPTIMIZATION ===== */
+
+/* Touch-friendly elements */
+.nav-links a,
+.cta-button,
+.producto-card,
+.contacto-item,
+.whatsapp-btn {
+    -webkit-tap-highlight-color: rgba(212, 175, 55, 0.3);
+    touch-action: manipulation;
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+    display: none;
+    color: #d4af37;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border: none;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu:hover {
+    color: #f4d03f;
+    transform: scale(1.1);
+}
+
+/* Mobile navigation overlay */
+.nav-links.mobile-active {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    animation: slideInMobile 0.3s ease-out;
+    z-index: 999;
+}
+
+.nav-links.mobile-active a {
+    font-size: 1.3rem;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 15px;
+    background: rgba(212, 175, 55, 0.05);
+}
+
+@keyframes slideInMobile {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* ===== RESPONSIVE DESIGN ===== */
+
+/* Large tablets and small desktops */
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 4.5rem;
+    }
+    
+    .section-title {
+        font-size: 3rem;
+    }
+    
+    .productos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tablets */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -636,61 +723,122 @@ body {
         display: block;
     }
     
+    .hero {
+        padding: 0 1rem;
+        min-height: 100vh;
+    }
+    
     .hero h1 {
-        font-size: 3.5rem;
+        font-size: 3.8rem;
+        margin-bottom: 1rem;
     }
     
     .hero-subtitle {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
+        margin-bottom: 2.5rem;
     }
     
     .cta-buttons {
         flex-direction: column;
+        gap: 1.5rem;
         align-items: center;
     }
     
-    .section-title {
-        font-size: 2.5rem;
+    .cta-button {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+        padding: 1.3rem 2rem;
+        font-size: 1.1rem;
     }
     
-    .whatsapp-btn {
-        width: 60px;
-        height: 60px;
-        bottom: 20px;
-        right: 20px;
-        font-size: 1.5rem;
+    .section-title {
+        font-size: 2.8rem;
+        margin-bottom: 3rem;
+    }
+    
+    .productos-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .producto-card {
+        padding: 2.5rem 2rem;
+        text-align: center;
+    }
+    
+    .producto-icon {
+        font-size: 5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .sobre-content h2 {
+        font-size: 2.8rem;
+    }
+    
+    .sobre-content p {
+        font-size: 1.2rem;
     }
     
     .stats {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .contacto h2 {
+        font-size: 2.8rem;
+    }
+    
+    .contacto-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .whatsapp-btn {
+        width: 65px;
+        height: 65px;
+        bottom: 25px;
+        right: 25px;
+        font-size: 1.8rem;
     }
 }
 
+/* Mobile phones */
 @media (max-width: 480px) {
     .nav {
         padding: 0 1rem;
     }
     
     .logo {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
+    }
+    
+    .hero {
+        padding: 0 1rem;
+        text-align: center;
     }
     
     .hero h1 {
-        font-size: 2.8rem;
+        font-size: 3rem;
+        letter-spacing: -1px;
     }
     
     .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
     }
     
     .cta-button {
-        padding: 1rem 2rem;
+        width: 100%;
+        max-width: 280px;
+        padding: 1.2rem 1.5rem;
         font-size: 1rem;
     }
     
     .section-title {
-        font-size: 2rem;
+        font-size: 2.2rem;
+        margin-bottom: 2.5rem;
     }
     
     .productos, .sobre-nosotros, .contacto {
@@ -701,13 +849,181 @@ body {
         padding: 2rem 1.5rem;
     }
     
+    .producto-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .producto-card p {
+        font-size: 1rem;
+    }
+    
+    .sobre-content h2 {
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .sobre-content p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+    
     .stats {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 1.5rem;
+        margin-top: 2.5rem;
+    }
+    
+    .stat-item {
+        padding: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .contacto h2 {
+        font-size: 2.2rem;
+        margin-bottom: 3rem;
     }
     
     .contacto-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
+    
+    .contacto-item {
+        padding: 2rem 1.5rem;
+    }
+    
+    .contacto-item i {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .contacto-item h3 {
+        font-size: 1.3rem;
+    }
+    
+    .contacto-item p {
+        font-size: 1rem;
+    }
+    
+    .whatsapp-btn {
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1.6rem;
+    }
+    
+    .footer {
+        padding: 2rem 1rem;
+    }
+    
+    .footer p {
+        font-size: 1rem;
+    }
 }
+
+/* Very small phones */
+@media (max-width: 320px) {
+    .logo {
+        font-size: 2rem;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .productos, .sobre-nosotros, .contacto {
+        padding: 3rem 0.5rem;
+    }
+    
+    .producto-card, .contacto-item {
+        padding: 1.5rem 1rem;
+    }
+    
+    .whatsapp-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 1.4rem;
+    }
+}
+
+/* Landscape orientation for mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 6rem 1rem 4rem;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: row;
+        gap: 1rem;
+    }
+    
+    .cta-button {
+        width: auto;
+        max-width: none;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .logo,
+    .hero h1,
+    .section-title {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Disable animations on mobile if preferred */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Touch hover states */
+@media (hover: none) and (pointer: coarse) {
+    .producto-card:hover,
+    .contacto-item:hover,
+    .nav-links a:hover,
+    .cta-button:hover {
+        transform: none;
+    }
+    
+    .producto-card:active {
+        transform: scale(0.98);
+    }
+    
+    .cta-button:active {
+        transform: scale(0.95);
+    }
+}
+
